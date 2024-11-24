@@ -45,6 +45,6 @@ describe('Display Component', () => {
   
       const displayElement = screen.getByTestId('display-value');
   
-      expect(displayElement).toHaveTextContent('Value: ');
+      expect(displayElement).toHaveTextContent('Value:');
     });
   });

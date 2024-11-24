@@ -26,15 +26,31 @@ describe('Counter Component', () => {
         fireEvent.click(decrementButton);
         expect(countValue).toHaveTextContent('-1')
     })
+
+    test('reset count when reset button is clicked', () => {
+        render(<Counter />)
+        const countValue = screen.getByTestId('counter-value')
+        const resetButton = screen.getByText('Reset');
+        fireEvent.click(resetButton);
+        expect(countValue).toHaveTextContent('0')
+    })
 })
 
 describe('Greeting Component', () => {
-    test('renders the greeting message with the provided name', () => {
+    test('renders the greeting message with the student name', () => {
       render(<Greeting name="Verra" />)
 
       const greetingElement = screen.getByTestId('greeting');
   
       expect(greetingElement).toHaveTextContent('Hello, Verra');
+    });
+
+    test('renders the greeting message with the teacher name', () => {
+      render(<Greeting name="Farid Suryanto" />)
+
+      const greetingElement = screen.getByTestId('greeting');
+  
+      expect(greetingElement).toHaveTextContent('Hello, Farid Suryanto');
     });
   
     test('renders correctly without a name', () => {
