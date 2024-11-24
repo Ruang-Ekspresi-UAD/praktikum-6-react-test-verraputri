@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Counter from './counter';
+import Display from './display';
 
 describe('Counter Component', () => {
     test('renders the initial count value as 0', () => {
@@ -27,3 +28,23 @@ describe('Counter Component', () => {
         expect(countValue).toHaveTextContent('-1')
     })
 })
+
+describe('Display Component', () => {
+    test('renders the correct value', () => {
+      const testValue = 42;
+  
+      render(<Display value={testValue} />);
+  
+      const displayElement = screen.getByTestId('display-value');
+  
+      expect(displayElement).toHaveTextContent(`Value: ${testValue}`);
+    });
+  
+    test('renders correctly with empty value', () => {
+      render(<Display value="" />);
+  
+      const displayElement = screen.getByTestId('display-value');
+  
+      expect(displayElement).toHaveTextContent('Value: ');
+    });
+  });
